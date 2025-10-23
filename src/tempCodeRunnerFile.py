@@ -23,7 +23,7 @@ def ask_ready():
             print("Please enter \"yes\" or \"no\". Try again.")
             if attempts == 3:
                print("Too many invalid attempts.")
-               return False
+               return False 
             
 def ask_question(q: Question) -> bool:
     """Show the question, get an answer, and return True if correct"""
@@ -42,7 +42,19 @@ def ask_question(q: Question) -> bool:
         return True
     else:
         print(f"Wrong! The correct answer was {q.answer}.")
-        return False            
+        return False
+
+def run_quiz(questions):
+    correct = 0
+    for q in questions:
+        result = ask_question(q)
+        if result:
+            correct += 1
+
+    print(f"\nYou answered {correct} out of {len(questions)} correctly.")
+    percentage = round(100 * correct / len(questions), 2)
+    print(f"Your score: {percentage}%")
+                        
 
 if __name__ == "__main__":
     name = get_user_name()
@@ -54,16 +66,22 @@ if __name__ == "__main__":
     else:
         print("Starting the quiz...")
 
-         # ---- TEST: single question ----
+        questions = [
+            Question(
+                "What is the capital of France?",
+                ["A) Paris", "B) Rome", "C) Madrid", "D) Berlin"],
+                "A"
+            ),
+            Question(
+                "Which language runs in a web browser?",
+                ["A) Java", "B) C", "C) Python", "D) JavaScript"],
+                "D"
+            ),
+            Question(
+                "What does CPU stand for?",
+                ["A) Central Process Unit", "B) Central Processing Unit", "C) Computer Personal Unit", "D) Central Processor Utility"],
+                "B"
+            ),
+        ]    
 
-        sample_question = Question(
-            "What is the capital of France?",
-            ["A) Berlin", "B) Madrid", "C) Paris", "D) Rome"],
-            "C"
-        )
-
-        result = ask_question(sample_question)
-        if result:
-            print("You got it right!")
-        else:
-            print("Better luck next time!") 
+        run_quiz(questions)

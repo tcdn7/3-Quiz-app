@@ -1,3 +1,5 @@
+from question import Question
+
 def get_user_name():
     while True:
         name = input("Enter your name: ").strip()
@@ -22,6 +24,25 @@ def ask_ready():
             if attempts == 3:
                print("Too many invalid attempts.")
                return False
+            
+def ask_question(q: Question) -> bool:
+    """Show the question, get an answer, and return True if correct"""
+    print("\n" + q.text)
+    for opt in q.options:
+        print(opt)
+
+    user_answer = input("Your answer (A/B/C/D): ").strip().upper()
+
+    if user_answer not in {"A", "B", "C", "D"}:
+        print("Invalid choice. Please answer with A, B, C, or D.")
+        return False
+
+    if q.check_answer(user_answer):
+        print("Correct!")
+        return True
+    else:
+        print(f"Wrong! The correct answer was {q.answer}.")
+        return False            
 
 if __name__ == "__main__":
     name = get_user_name()
@@ -31,4 +52,18 @@ if __name__ == "__main__":
     if not ready:
         exit()
     else:
-        print("Starting the quiz...")    
+        print("Starting the quiz...")
+
+         # ---- TEST: single question ----
+
+        sample_question = Question(
+            "What is the capital of France?",
+            ["A) Berlin", "B) Madrid", "C) Paris", "D) Rome"],
+            "C"
+        )
+
+        result = ask_question(sample_question)
+        if result:
+            print("You got it right!")
+        else:
+            print("Better luck next time!")        

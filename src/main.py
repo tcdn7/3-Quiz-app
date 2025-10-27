@@ -1,4 +1,5 @@
 from question import Question
+from storage import load_questions_from_json
 
 def get_user_name():
     while True:
@@ -66,22 +67,11 @@ if __name__ == "__main__":
     else:
         print("Starting the quiz...")
 
-        questions = [
-            Question(
-                "What is the capital of France?",
-                ["A) Paris", "B) Rome", "C) Madrid", "D) Berlin"],
-                "A"
-            ),
-            Question(
-                "Which language runs in a web browser?",
-                ["A) Java", "B) C", "C) Python", "D) JavaScript"],
-                "D"
-            ),
-            Question(
-                "What does CPU stand for?",
-                ["A) Central Process Unit", "B) Central Processing Unit", "C) Computer Personal Unit", "D) Central Processor Utility"],
-                "B"
-            ),
-        ]    
+        try:
+            questions = load_questions_from_json("data/questions.json")
+        except (FileNotFoundError, ValueError) as e:
+            print(f"Error while loading questions: {e}")
+            exit()
+
 
         run_quiz(questions)

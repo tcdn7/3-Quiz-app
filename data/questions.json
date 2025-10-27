@@ -1,0 +1,32 @@
+[
+    {
+        "text": "What is the capital of France?",
+        "options": [
+            "Paris",
+            "Rome",
+            "Madrid",
+            "Berlin"
+        ],
+        "answer": "A"
+    },
+    {
+        "text": "Which language runs in a web browser?",
+        "options": [
+            "Java",
+            "C",
+            "Python",
+            "JavaScript"
+        ],
+        "answer": "D"
+    },
+    {
+        "text": "What does CPU stand for?",
+        "options": [
+            "Central Process Unit",
+            "Central Processing Unit",
+            "Computer Personal Unit",
+            "Central Processor Utility"
+        ],
+        "answer": "B"
+    }
+]

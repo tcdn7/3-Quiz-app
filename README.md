@@ -21,7 +21,7 @@ At the end, the app displays the total score and percentage of correct answers.
 
 ## 🗂️ Project Structure
 
-\`\`\`
+```
 quiz-app/
   ├─ data/
   │  └─ questions.json
@@ -31,7 +31,7 @@ quiz-app/
   │  └─ storage.py
   ├─ .gitignore
   └─ README.md
-\`\`\`
+```
 
 
 

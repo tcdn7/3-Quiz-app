@@ -48,9 +48,11 @@ quiz-app/
    cd 3-quiz-app
 
 2. (Optional) Create and activate a virtual environment:
+    ```
     python -m venv .venv
     .venv\Scripts\activate      # on Windows
     source .venv/bin/activate   # on macOS/Linux
+    ```
 
 3. Run the app:
     python src/main.py
